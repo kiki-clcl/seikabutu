@@ -22,7 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    
+
+    
+    //<a href="/names/{{ $user->id }}/edit" class="btn btn-primary">編集</a>
+    //<input type='text' name='name' value="{{ $user->name }}">
+                //<input type='text' name='body' value="{{ $user->body }}">
 }
