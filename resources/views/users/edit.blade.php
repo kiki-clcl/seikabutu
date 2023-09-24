@@ -13,8 +13,9 @@
             @csrf
             @method('PUT')
             <div class='content__body'>
-                <h1>本文</h1>
+                <h1>Name</h1>
                 <input type='text' name='name' value="{{ $user->name }}">
+                <h1>一言</h1>
                 <input type='text' name='body' value="{{ $user->body }}">
             </div>
             <input type="submit" value="保存">

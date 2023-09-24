@@ -14,9 +14,9 @@ use App\Http\Controllers\NameController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+   // return view('welcome');
+//});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -28,15 +28,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/name', [NameController::class, 'index']);
+Route::get('/name', [NameController::class, 'index'])->middleware('auth');
 
-Route::get('/', function() {
-    return view('users.name');
-});
+Route::get('/', [NameController::class, 'hellow'])->middleware('auth');
 
-Route::get('/names/{id}/edit', [NameController::class, 'edit']);
+//Route::get('/', function() {
+    //return view('users.name');
+//});
 
-Route::put('/names/{id}', [NameController::class, 'update']);
+Route::get('/names/{name}/edit', [NameController::class, 'edit'])->middleware('auth');
+
+Route::put('/names/{name}', [NameController::class, 'update'])->middleware('auth');
+
 
 
 require __DIR__.'/auth.php';
