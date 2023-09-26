@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('body')->nullable();
-            
-            //
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->string('title');
+            $table->integer('number');
+            $table->foreignId('mode_id')->nullable()->constrained();
         });
     }
 
@@ -27,9 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('body');
-            //
-        });
+        Schema::dropIfExists('categories');
     }
 };
