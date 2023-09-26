@@ -27,8 +27,8 @@ class NameController extends Controller
     public function edit($id)
 {
     
-    //$user = Auth::user();
-    $user = User::find($id);
+    $user = Auth::user();
+    //$user = User::find($id);
     
     return view('users.edit', ['user' => $user]);
 }
@@ -38,12 +38,16 @@ class NameController extends Controller
     public function update(NameRequest $request)
 {
     $user = Auth::user();
-    $input_name = $request->input('name');
-    $input_body = $request->input('body');
+    
+    //$request->input('name');
+    //$request->input('body');
+    
+    $profile_name = $request->input('name');
+    $profile_body = $request->input('body');
     
     //dd(Auth::user());
-    $user->fill(['name' => $input_name, 'body' => $input_body])->save();
-    //$user->fill($request->all())->save();
+    //$user->fill(['name' => $input_name, 'body' => $input_body])->save();
+    $user->fill($request->all())->save();
     return redirect('/');//聞く
     //return redirect('/' . $user->id);
 }
