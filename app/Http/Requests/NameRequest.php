@@ -21,7 +21,8 @@ class NameRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:100',
-            'body' => 'required|string|max:4000',
+            'body' => 'nullable|string|max:4000',
+            //'icon' => 'required|string|max:300',
             //
         ];
     }
