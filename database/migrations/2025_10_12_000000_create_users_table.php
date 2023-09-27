@@ -22,6 +22,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('body')->nullable();
+            $table->string('icon_url')->nullable();
             $table->foreignId('category_id')->nullable()->constrained();
             $table->foreignId('rank_id')->nullable()->constrained();
         });
