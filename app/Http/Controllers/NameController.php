@@ -68,7 +68,9 @@ class NameController extends Controller
 
     public function hellow(User $user)
     {
-        return view('users.name')->with(['user' => $user->first()]);
+        $user = Auth::user();
+        
+        return view('users.name')->with(['user' => $user]);//->first()]);
     }
 
 }
