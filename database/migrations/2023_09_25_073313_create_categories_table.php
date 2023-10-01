@@ -20,6 +20,10 @@ return new class extends Migration
             $table->integer('number');
             $table->foreignId('mode_id')->nullable()->constrained();
         });
+            
+        //Schema::table('users', function (Blueprint $table) {
+            //$table->foreignId('category_id')->constrained(); 
+        //});
     }
 
     /**

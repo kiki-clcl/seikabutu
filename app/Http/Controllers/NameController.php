@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Cloudinary;
+use App\Models\Category;
 
 
 class NameController extends Controller
@@ -25,18 +26,22 @@ class NameController extends Controller
        // return view('users.edit')->with(['user' => $user]); 
    // }
     
-    public function edit($id)
+    public function edit($id, Category $category)
 {
     
     $user = Auth::user();
     //$user = User::find($id);
     
-    return view('users.edit', ['user' => $user]);
+    $category = Category::all();
+    
+    return view('users.edit', ['user' => $user, 'categories' => $category]);
+    
+   //return view('users.edit', ['user' => $user])->with(['category' => $category->get()]);
 }
 
    
     
-    public function update(NameRequest $request,User $user)
+    public function update(NameRequest $request,User $user, Category $category)
 {
     $user = Auth::user();
     
@@ -54,6 +59,7 @@ class NameController extends Controller
     $request->merge(['icon_url' => $icon_url]);
     }
    
+    $request->input('category_id');
     //$input += ['icon_url' => $icon_url];
    
     //dd($profile_icon_url);
@@ -62,11 +68,12 @@ class NameController extends Controller
     //$user->fill($input)->save();
     
     $user->fill($request->all())->save();
+    dd($user);
     return redirect('/');//聞く
     //return redirect('/' . $user->id);
 }
 
-    public function hellow(User $user)
+    public function hellow(User $user, Category $category)
     {
         $user = Auth::user();
         

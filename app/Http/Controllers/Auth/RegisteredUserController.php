@@ -39,7 +39,11 @@ class RegisteredUserController extends Controller
             'body' => ['nullable', 'string', 'max:4000'],
         ]);
         
+        $icon_url=null;
+        
+        if($request->file('icon')){
         $icon_url = Cloudinary::upload($request->file('icon')->getRealPath())->getSecurePath();
+        }
 
         $user = User::create([
             'name' => $request->name,

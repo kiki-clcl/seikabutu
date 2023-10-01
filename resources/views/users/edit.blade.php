@@ -15,6 +15,16 @@
             <div class='content__body'>
                 <h1>Name</h1>
                 <input type='text' name='name' value="{{ $user->name }}">
+                
+                <div class="category">
+                    <h2>Category</h2>
+                    <select name="category_id">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                    @endforeach
+                    </select>
+                </div>
+                
                 <h1>一言</h1>
                 <input type='text' name='body' value="{{ $user->body }}">
             </div>
