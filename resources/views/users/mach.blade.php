@@ -12,11 +12,7 @@
             <div class='names'>
                 <h1>名前</h1>
                 <p class='name'>{{ $user->name }}</p>
-                
-                <h2>Category</h2>
-                <p class='category'>{{ $user->category->title ?? '選択されてません'}}</p>
-                
-                <h3>一言</h3>
+                <h2>一言</h2>
                 <p class='body'>{{ $user->body }}</p>
             </div>
             <div>
