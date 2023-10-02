@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Cloudinary;
 use App\Models\Category;
+use App\Models\Rank;
 
 
 class NameController extends Controller
@@ -26,7 +27,7 @@ class NameController extends Controller
        // return view('users.edit')->with(['user' => $user]); 
    // }
     
-    public function edit($id, Category $category)
+    public function edit($id, Category $category, Rank $rank)
 {
     
     $user = Auth::user();
@@ -34,14 +35,18 @@ class NameController extends Controller
     
     $category = Category::all();
     
-    return view('users.edit', ['user' => $user, 'categories' => $category]);
+    $rank = Rank::all();
+    
+    return view('users.edit', ['user' => $user, 'categories' => $category, 'ranks' => $rank]);
+    
+    
     
    //return view('users.edit', ['user' => $user])->with(['category' => $category->get()]);
 }
 
    
     
-    public function update(NameRequest $request,User $user, Category $category)
+    public function update(NameRequest $request,User $user, Category $category, Rank $rank)
 {
     $user = Auth::user();
     
@@ -60,6 +65,7 @@ class NameController extends Controller
     }
    
     $request->input('category_id');
+    $request->input('rank_id');
     //$input += ['icon_url' => $icon_url];
    
     //dd($profile_icon_url);
@@ -68,16 +74,23 @@ class NameController extends Controller
     //$user->fill($input)->save();
     
     $user->fill($request->all())->save();
-    dd($user);
+    //dd($user);
     return redirect('/');//聞く
     //return redirect('/' . $user->id);
 }
 
-    public function hellow(User $user, Category $category)
+    public function hellow(User $user, Category $category, Rank $rank)
     {
         $user = Auth::user();
         
         return view('users.name')->with(['user' => $user]);//->first()]);
+    }
+    
+    public function match(User $user)
+    {
+        $user = Auth::user();
+        
+        return view('users.match')->with(['user' => $user]);
     }
 
 }
