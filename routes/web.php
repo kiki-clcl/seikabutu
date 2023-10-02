@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NameController;
+use App\Http\Controllers\MatchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +40,12 @@ Route::get('/', [NameController::class, 'hellow'])->middleware('auth');
 Route::get('/names/{name}/edit', [NameController::class, 'edit'])->middleware('auth');
 
 Route::put('/names/{name}', [NameController::class, 'update'])->middleware('auth');
+
+Route::get('/match', [NameController::class, 'match'])->middleware('auth');
+
+Route::get('/match/{name}/edit', [NameController::class, 'matchedit'])->middleware('auth');
+
+Route::put('/match/{name}', [NameController::class, 'matchupdate'])->middleware('auth');
 
 
 

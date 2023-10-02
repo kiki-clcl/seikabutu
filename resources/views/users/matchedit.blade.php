@@ -7,13 +7,12 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
    <body>
-    <h1 class="title">編集画面</h1>
+    <h1 class="title">マッチング編集画面</h1>
     <div class="content">
-        <form action="/names/{{ $user->id }}" method="POST" enctype="multipart/form-data">
+        <form action="/match/{{ $user->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class='content__body'>
-                <h1>Name</h1>
+            <div class='match__body'>
                 <input type='text' name='name' value="{{ $user->name }}">
                 
                 <div class="category">
@@ -25,20 +24,7 @@
                     </select>
                 </div>
                 
-                <div class="rank">
-                    <h2>Rank</h2>
-                    <select name="rank_id">
-                    @foreach ($ranks as $rank)
-                        <option value="{{ $rank->id }}">{{ $rank->title }}</option>
-                    @endforeach
-                    </select>
-                </div>
-                
-                <h1>一言</h1>
-                <input type='text' name='body' value="{{ $user->body }}">
-            </div>
-            <div class="icon">
-                <input type="file" name="icon">
+
             </div>
             <input type="submit" value="保存">
         </form>

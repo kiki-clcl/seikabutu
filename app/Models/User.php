@@ -13,10 +13,26 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
 
-        public function category()
+        public function categorys()
     {
         return $this->belongsTo(Category::class);
     }
+    
+        public function ranks()
+    {
+        return $this->belongsTo(Rank::class);
+    }
+    
+        public function host()   
+    {
+        return $this->hasMany(Host::class);  
+    }
+    
+        public function guest()   
+    {
+        return $this->hasMany(Guest::class);  
+    }
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -29,6 +45,7 @@ class User extends Authenticatable
         'body',
         'icon_url',
         'category_id',
+        'rank_id',
     ];
     
     /**

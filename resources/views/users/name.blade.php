@@ -16,6 +16,9 @@
                 <h2>Category</h2>
                 <p class='category'>{{ $user->category->title ?? '選択されてません'}}</p>
                 
+                <h2>Rank</h2>
+                <p class='rank'>{{ $user->rank->title ?? '選択されてません'}}</p>
+                
                 <h3>一言</h3>
                 <p class='body'>{{ $user->body }}</p>
             </div>
