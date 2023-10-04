@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title');
             $table->integer('number');
-            $table->foreignId('mode_id')->nullable()->constrained();
+            $table->foreignId('mode_id')->nullable()->constrained('modes');
         });
             
         //Schema::table('users', function (Blueprint $table) {

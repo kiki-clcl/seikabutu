@@ -16,6 +16,6 @@ class host extends Model
     
         public function matchroom()
     {
-        return $this->hasMany(Matchroom::class);
+        return $this->belongsTo(Matchroom::class);
     }
 }

@@ -9,18 +9,22 @@ class Matchroom extends Model
 {
     use HasFactory;
     
-    public function host()
+    public function hosts()
     {
-        return $this->belongsTo(Host::class);
+        return $this->hasMany(Host::class);
     }
     
     public function guests()
     {
-        return $this->hasmany(Guest::class);
+        return $this->hasMany(Guest::class);
     }
     
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
+    
+    protected $fillable = [
+        'category_id',
+    ];
 }

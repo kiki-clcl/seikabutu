@@ -13,13 +13,19 @@
             @csrf
             @method('PUT')
             <div class='match__body'>
-                <input type='text' name='name' value="{{ $user->name }}">
                 
                 <div class="category">
                     <h2>Category</h2>
                     <select name="category_id">
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->title }}</option>
+                    @endforeach
+                    </select>
+                    
+                    <h1>Mode</h1>
+                    <select name="mode_id">
+                    @foreach ($modes as $mode)
+                        <option value="{{ $mode->id }}">{{ $mode->title }}</option>
                     @endforeach
                     </select>
                 </div>

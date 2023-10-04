@@ -11,11 +11,11 @@ class Guest extends Model
     
         public function user()
     {
-        return $this->belogsTo(User::class);
+        return $this->hasOne(User::class);
     }
     
     public function matchroom()
     {
-        return $this->belogsTo(Matchroom::class);
+        return $this->belongsTo(Matchroom::class);
     }
 }

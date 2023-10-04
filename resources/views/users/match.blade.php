@@ -30,7 +30,7 @@
             <div>
                 <img src="{{ $user->icon_url }}" alt="画像が読み込めません。"/>
             </div>
-            <a href="/names/{{ $user->id }}/edit" class="btn btn-primary">編集</a>
+            <a href="/match/{{ $user->id }}/edit" class="btn btn-primary">編集</a>
         </div>
     </body>
 </html>
