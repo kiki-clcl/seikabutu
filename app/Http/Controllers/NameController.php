@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Cloudinary;
 use App\Models\Category;
 use App\Models\Rank;
-
+use App\Models\Mode;
+use App\Models\Matchroom;
 
 class NameController extends Controller
 {
@@ -92,5 +93,34 @@ class NameController extends Controller
         
         return view('users.match')->with(['user' => $user]);
     }
+    
+    public function matchedit($id, Category $category, Rank $rank, Mode $mode)
+{
+    
+    $user = Auth::user();
+    //$user = User::find($id);
+    
+    $category = Category::all();
+    
+    $rank = Rank::all();
+    
+    $mode = Mode::all();
+    
+    return view('users.matchedit', ['user' => $user, 'categories' => $category, 'modes' =>$mode]);
+}
+
+    public function matchupdate(Request $request, User $user, Category $category, Rank $rank, Mode $mode, Matchroom $matchroom)
+{
+    $user = Auth::user();
+
+    $request->input('category_id');
+    $request->input('mode_id');
+    
+    $category->save();
+    $matchroom->fill($request->all())->save();
+    dd($request);
+    return redirect('/match');
+    
+}
 
 }
