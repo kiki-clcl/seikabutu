@@ -1,14 +1,6 @@
-import './bootstrap';
-import 'alpinejs';
+ 
 
-import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-
-Alpine.start();
-
-
-Echo.channel(`message-added-channel`)
+    Echo.channel(`message-added-channel`)
     .listen('MessageAdded', (e) => {
       console.log('received a message');
    

@@ -31,7 +31,7 @@ class MessageController extends Controller
         
     }
     
-    public function allmessage()
+    public function allmessage(Requst $request, Messageroom $message)
     {
         return Message::with('user')->get();
     }
