@@ -3,7 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NameController;
-use App\Http\Controllers\MatchController;
+use App\Http\Controllers\MessageController;
+use App\Events\MessageAdded;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +47,17 @@ Route::get('/match', [NameController::class, 'match'])->middleware('auth');
 Route::get('/match/{name}/edit', [NameController::class, 'matchedit'])->middleware('auth');
 
 Route::put('/match/{name}', [NameController::class, 'matchupdate'])->middleware('auth');
+
+//Route::get('/message',[MessageController::class, 'message'])->middleware('auth');
+
+//Route::get('/messages', function (){
+    //$message = ["id" => 1, 'name' => 'メッセージ確認'];
+    //event(new MessageAdded($message));
+//});
+Route::get('/messageroom', [MessageController::class, 'messageroom'])->middleware('auth');
+Route::post('/newmessage', [MessageController::class, 'newmessage'])->middleware('auth');
+Route::get('/allmessage', [MessageController::class, 'allmessage'])->middleware('auth');
+
 
 
 

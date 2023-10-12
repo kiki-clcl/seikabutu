@@ -24,6 +24,11 @@ class Matchroom extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
     
+    public function messageroom()
+    {
+        return $this->hasOne(Messageroom::class);
+    }
+    
     protected $fillable = [
         'category_id',
     ];

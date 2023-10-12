@@ -32,6 +32,11 @@ class User extends Authenticatable
         {
             return $this->hasMany(Guest::class);
         }
+        
+        public function messagerooms()
+        {
+            return $this->hasMany(messageroom::class);
+        }
     
     /**
      * The attributes that are mass assignable.
